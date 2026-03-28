@@ -23,54 +23,6 @@ body {
   align-items: center;
 }
 
-.container i {
-  position: absolute;
-  inset: 0;
-  border: 2px solid #fff;
-  transition: 0.5s;
-}
-
-.container i:nth-child(1) {
-  animation: animate 7s linear infinite;
-  transform: rotate(45deg);
-  border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
-}
-
-.container i:nth-child(2) {
-  animation: animate 9s linear infinite;
-  transform: rotate(45deg);
-  border-radius: 41% 44% 56% 59% / 38% 62% 63% 37%;
-}
-
-.container i:nth-child(3) {
-  animation: animate2 12s linear infinite;
-  transform: rotate(45deg);
-  border-radius: 50% 45% 60% 40% / 45% 55% 45% 55%;
-}
-
-.container:hover i {
-  border: 6px solid var(--clr);
-  filter: drop-shadow(0 0 20px var(--clr));
-}
-
-@keyframes animate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes animate2 {
-  0% {
-    transform: rotate(360deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
 .login {
   position: absolute;
   width: 320px;
