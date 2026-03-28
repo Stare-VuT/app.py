@@ -1,26 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-import json
-import os
+from database import init_db, create_user, get_user, verify_user
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey123"
 
-USERS_FILE = "users.json"
-
-# Tạo file users.json nếu chưa có
-if not os.path.exists(USERS_FILE):
-    with open(USERS_FILE, "w") as f:
-        json.dump([], f)
-
-
-def load_users():
-    with open(USERS_FILE, "r") as f:
-        return json.load(f)
-
-
-def save_users(users):
-    with open(USERS_FILE, "w") as f:
-        json.dump(users, f, indent=4)
+init_db()
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -29,16 +13,20 @@ def login():
         username = request.form["username"].strip()
         password = request.form["password"].strip()
 
-        users = load_users()
+        user = verify_user(username, password)
 
-        for user in users:
-            if user["username"] == username and user["password"] == password:
-                session["user"] = username
-                flash("Đăng nhập thành công!", "success")
-                return redirect(url_for("home"))
+        if not user:
+            flash("Sai tài khoản hoặc mật khẩu!", "error")
+            return redirect(url_for("login"))
 
-        flash("Sai tài khoản hoặc mật khẩu!", "error")
-        return redirect(url_for("login"))
+        if user["banned"] == 1:
+            flash("Tài khoản của bạn đã bị khóa!", "error")
+            return redirect(url_for("login"))
+
+        session["user"] = user["username"]
+        session["role"] = user["role"]
+        flash("Đăng nhập thành công!", "success")
+        return redirect(url_for("home"))
 
     return render_template("index.html")
 
@@ -58,13 +46,44 @@ def register():
             flash("Mật khẩu xác nhận không khớp!", "error")
             return redirect(url_for("register"))
 
-        users = load_users()
+        if get_user(username):
+            flash("Tên tài khoản đã tồn tại!", "error")
+            return redirect(url_for("register"))
 
-        for user in users:
-            if user["username"] == username:
-                flash("Tên tài khoản đã tồn tại!", "error")
-                return redirect(url_for("register"))
+        success = create_user(username, password)
 
+        if success:
+            flash("Đăng ký thành công! Hãy đăng nhập.", "success")
+            return redirect(url_for("login"))
+        else:
+            flash("Đăng ký thất bại!", "error")
+            return redirect(url_for("register"))
+
+    return render_template("register.html")
+
+
+@app.route("/home")
+def home():
+    if "user" not in session:
+        flash("Bạn cần đăng nhập trước!", "error")
+        return redirect(url_for("login"))
+
+    return render_template(
+        "home.html",
+        username=session["user"],
+        role=session.get("role", "user")
+    )
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    flash("Bạn đã đăng xuất.", "success")
+    return redirect(url_for("login"))
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
         users.append({
             "username": username,
             "password": password
