@@ -24,7 +24,6 @@ def init_db():
     """)
     conn.commit()
 
-    # Tạo admin mặc định nếu chưa có
     existing_admin = conn.execute(
         "SELECT * FROM users WHERE username = ?",
         ("admin",)
@@ -62,13 +61,6 @@ def get_user(username):
     return user
 
 
-def get_all_users():
-    conn = get_db()
-    users = conn.execute("SELECT * FROM users ORDER BY id DESC").fetchall()
-    conn.close()
-    return users
-
-
 def verify_user(username, password):
     conn = get_db()
     user = conn.execute(
@@ -77,31 +69,3 @@ def verify_user(username, password):
     ).fetchone()
     conn.close()
     return user
-
-
-def ban_user(username):
-    conn = get_db()
-    conn.execute("UPDATE users SET banned = 1 WHERE username = ?", (username,))
-    conn.commit()
-    conn.close()
-
-
-def unban_user(username):
-    conn = get_db()
-    conn.execute("UPDATE users SET banned = 0 WHERE username = ?", (username,))
-    conn.commit()
-    conn.close()
-
-
-def delete_user(username):
-    conn = get_db()
-    conn.execute("DELETE FROM users WHERE username = ?", (username,))
-    conn.commit()
-    conn.close()
-
-
-def make_admin(username):
-    conn = get_db()
-    conn.execute("UPDATE users SET role = 'admin' WHERE username = ?", (username,))
-    conn.commit()
-    conn.close()
