@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng nhập</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <i style="--clr: #4ca0ff;"></i>
+    <i style="--clr: #7adaa5;"></i>
+    <i style="--clr: #b153d7;"></i>
+
+    <div class="login">
+      <h2>Đăng Nhập</h2>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="message {{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <form method="POST">
+        <div class="input-box">
+          <input type="text" name="username" placeholder="Tên tài khoản" required />
+        </div>
+
+        <div class="input-box">
+          <input type="password" name="password" placeholder="Mật khẩu" required />
+        </div>
+
+        <div class="input-box">
+          <input type="submit" value="Đăng Nhập" />
+        </div>
+      </form>
+
+      <div class="links">
+        <a href="#">Quên mật khẩu?</a>
+        <a href="{{ url_for('register') }}">Đăng ký</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
