@@ -11,6 +11,7 @@
     <div class="login">
       <h2>Xin chào</h2>
       <div class="welcome-text">{{ username }}</div>
+      <div class="role-text">Quyền: {{ role }}</div>
 
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
