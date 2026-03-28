@@ -83,34 +83,4 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
-        users.append({
-            "username": username,
-            "password": password
-        })
-
-        save_users(users)
-        flash("Đăng ký thành công! Hãy đăng nhập.", "success")
-        return redirect(url_for("login"))
-
-    return render_template("register.html")
-
-
-@app.route("/home")
-def home():
-    if "user" not in session:
-        flash("Bạn cần đăng nhập trước!", "error")
-        return redirect(url_for("login"))
-
-    return render_template("home.html", username=session["user"])
-
-
-@app.route("/logout")
-def logout():
-    session.pop("user", None)
-    flash("Bạn đã đăng xuất.", "success")
-    return redirect(url_for("login"))
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
