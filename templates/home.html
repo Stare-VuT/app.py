@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trang chủ</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <i style="--clr: #00f2fe;"></i>
+    <i style="--clr: #43e97b;"></i>
+    <i style="--clr: #b153d7;"></i>
+
+    <div class="login">
+      <h2>Xin chào</h2>
+      <div class="welcome-text">{{ username }}</div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="message {{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <div class="input-box">
+        <a href="{{ url_for('logout') }}" class="btn-logout">Đăng Xuất</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
