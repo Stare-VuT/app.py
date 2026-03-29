@@ -9,18 +9,18 @@ USERS_FILE = "users.json"
 
 # Tạo file users.json nếu chưa có
 if not os.path.exists(USERS_FILE):
-    with open(USERS_FILE, "w", encoding="utf-8") as f:
+    with open(USERS_FILE, "w") as f:
         json.dump([], f)
 
 
 def load_users():
-    with open(USERS_FILE, "r", encoding="utf-8") as f:
+    with open(USERS_FILE, "r") as f:
         return json.load(f)
 
 
 def save_users(users):
-    with open(USERS_FILE, "w", encoding="utf-8") as f:
-        json.dump(users, f, indent=4, ensure_ascii=False)
+    with open(USERS_FILE, "w") as f:
+        json.dump(users, f, indent=4)
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -94,4 +94,4 @@ def logout():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(debug=True)
