@@ -10,60 +10,74 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a, #111827, #1e1b4b);
+  background: #111;
   overflow: hidden;
 }
 
+/* Giữ container cũ */
 .container {
-  width: 100%;
+  position: relative;
+  width: 450px;
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
-.login-box {
-  width: 100%;
-  max-width: 400px;
-  min-height: 480px;
+/* XÓA VÒNG TRÒN = ẨN THẺ i */
+.container i {
+  display: none;
+}
+
+/* Giữ nguyên form login */
+.login {
+  position: absolute;
+  width: 320px;
+  min-height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 18px;
-  background: rgba(255, 255, 255, 0.06);
+  z-index: 10;
+
+  /* thêm nền kính mờ cho đẹp */
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 28px;
-  backdrop-filter: blur(18px);
-  box-shadow: 0 0 35px rgba(0, 0, 0, 0.4);
+  border-radius: 30px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
   padding: 30px 25px;
 }
 
-.login-box h2 {
+.login h2 {
   font-size: 2em;
   color: #fff;
 }
 
-.input-box {
+.login .input-box {
   position: relative;
   width: 100%;
 }
 
-.input-box input,
+.login .input-box input,
 .btn-logout {
+  position: relative;
   width: 100%;
-  padding: 13px 20px;
+  padding: 12px 20px;
   background: transparent;
   border: 2px solid #fff;
   border-radius: 40px;
   font-size: 1.05em;
   color: #fff;
+  box-shadow: none;
   outline: none;
   text-align: center;
 }
 
-.input-box input[type="submit"],
+.login .input-box input[type="submit"],
 .btn-logout {
+  width: 100%;
   background: linear-gradient(45deg, #0078ff, #b153d7);
   border: none;
   cursor: pointer;
@@ -72,32 +86,35 @@ body {
   display: inline-block;
 }
 
-.input-box input[type="submit"]:hover,
+.login .input-box input[type="submit"]:hover,
 .btn-logout:hover {
   background: linear-gradient(45deg, #7adaa5, #0078ff);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+  box-shadow: 1px 1px 20px 1px #fff;
 }
 
-.input-box input::placeholder {
+.login .input-box input::placeholder {
   color: rgba(255, 255, 255, 0.75);
 }
 
-.links {
+.login .links {
+  position: relative;
   width: 100%;
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
-.links a {
+.login .links a {
   text-decoration: none;
   color: #fff;
   transition: 0.3s;
   font-size: 0.95em;
 }
 
-.links a:hover {
+.login .links a:hover {
   color: #00f2fe;
 }
 
