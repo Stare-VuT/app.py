@@ -126,6 +126,13 @@ body {
   font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -135,25 +142,23 @@ body {
   overflow: hidden;
 }
 
-/* GIỮ CONTAINER CŨ */
 .container {
   position: relative;
   width: 450px;
-  height: 520px;
+  height: 450px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* GIỮ THẺ i NHƯNG ẨN ĐI (để không vỡ cấu trúc HTML) */
+/* GIỮ THẺ i NHƯ CŨ NHƯNG ẨN HOÀN TOÀN */
 .container i {
   display: none;
 }
 
-/* KHÔI PHỤC KHUNG LOGIN CŨ */
 .login {
   position: absolute;
-  width: 340px;
+  width: 320px;
   min-height: 100%;
   display: flex;
   justify-content: center;
@@ -161,14 +166,6 @@ body {
   flex-direction: column;
   gap: 18px;
   z-index: 10;
-
-  /* nền đẹp */
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 30px;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
-  padding: 30px 25px;
 }
 
 .login h2 {
@@ -267,30 +264,18 @@ body {
   text-align: center;
 }
 
-/* PHẦN LIÊN HỆ ADMIN */
+/* THÊM LIÊN HỆ ADMIN NHƯNG KHÔNG PHÁ GIAO DIỆN CŨ */
 .admin-contact {
   width: 100%;
-  margin-top: 10px;
-  padding: 14px;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 8px;
   text-align: center;
 }
 
 .admin-contact h3 {
   color: #00f2fe;
-  font-size: 1.05em;
-  margin-bottom: 10px;
+  font-size: 1em;
+  margin-bottom: 8px;
 }
 
 .admin-contact p {
-  color: #fff;
-  font-size: 0.95em;
-  margin: 6px 0;
-}
-
-.admin-contact span {
-  color: #7adaa5;
-  font-weight: bold;
-}
+  color: #fff
