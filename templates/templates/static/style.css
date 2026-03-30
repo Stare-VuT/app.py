@@ -115,8 +115,6 @@ body {
 
 .login .links a:hover {
   color: #00f2fe;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -129,64 +127,60 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #111;
+  background: linear-gradient(135deg, #0f172a, #111827, #1e1b4b);
   overflow: hidden;
 }
 
 .container {
-  position: relative;
-  width: 450px;
-  height: 450px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
-/* GIỮ THẺ i NHƯ CŨ NHƯNG ẨN HOÀN TOÀN */
-.container i {
-  display: none;
-}
-
-.login {
-  position: absolute;
-  width: 320px;
-  min-height: 100%;
+.login-box {
+  width: 100%;
+  max-width: 400px;
+  min-height: 480px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 18px;
-  z-index: 10;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.4);
+  padding: 30px 25px;
 }
 
-.login h2 {
+.login-box h2 {
   font-size: 2em;
   color: #fff;
 }
 
-.login .input-box {
+.input-box {
   position: relative;
   width: 100%;
 }
 
-.login .input-box input,
+.input-box input,
 .btn-logout {
-  position: relative;
   width: 100%;
-  padding: 12px 20px;
+  padding: 13px 20px;
   background: transparent;
   border: 2px solid #fff;
   border-radius: 40px;
   font-size: 1.05em;
   color: #fff;
-  box-shadow: none;
   outline: none;
   text-align: center;
 }
 
-.login .input-box input[type="submit"],
+.input-box input[type="submit"],
 .btn-logout {
-  width: 100%;
   background: linear-gradient(45deg, #0078ff, #b153d7);
   border: none;
   cursor: pointer;
@@ -195,35 +189,32 @@ body {
   display: inline-block;
 }
 
-.login .input-box input[type="submit"]:hover,
+.input-box input[type="submit"]:hover,
 .btn-logout:hover {
   background: linear-gradient(45deg, #7adaa5, #0078ff);
-  box-shadow: 1px 1px 20px 1px #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
 }
 
-.login .input-box input::placeholder {
+.input-box input::placeholder {
   color: rgba(255, 255, 255, 0.75);
 }
 
-.login .links {
-  position: relative;
+.links {
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 10px;
+  justify-content: center;
+  gap: 12px;
   flex-wrap: wrap;
-  gap: 10px;
 }
 
-.login .links a {
+.links a {
   text-decoration: none;
   color: #fff;
   transition: 0.3s;
   font-size: 0.95em;
 }
 
-.login .links a:hover {
+.links a:hover {
   color: #00f2fe;
 }
 
@@ -253,28 +244,4 @@ body {
   font-size: 1.3em;
   font-weight: bold;
   text-align: center;
-}
-
-/* THÊM LIÊN HỆ ADMIN NHƯNG KHÔNG PHÁ GIAO DIỆN CŨ */
-.admin-contact {
-  width: 100%;
-  margin-top: 8px;
-  text-align: center;
-}
-
-.admin-contact h3 {
-  color: #00f2fe;
-  font-size: 1em;
-  margin-bottom: 8px;
-}
-
-.admin-contact p {
-  color: #fff;
-  font-size: 0.95em;
-  margin: 4px 0;
-}
-
-.admin-contact span {
-  color: #7adaa5;
-  font-weight: bold;
 }
