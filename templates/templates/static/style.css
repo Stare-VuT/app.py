@@ -117,15 +117,6 @@ body {
   color: #00f2fe;
 }
 
-.message {
-  width: 100%;
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Tahoma, Geneva, Verdana, sans-serif;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -278,4 +269,12 @@ body {
 }
 
 .admin-contact p {
-  color: #fff
+  color: #fff;
+  font-size: 0.95em;
+  margin: 4px 0;
+}
+
+.admin-contact span {
+  color: #7adaa5;
+  font-weight: bold;
+}
