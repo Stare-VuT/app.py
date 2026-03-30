@@ -119,6 +119,128 @@ body {
 
 .message {
   width: 100%;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #111;
+  overflow: hidden;
+}
+
+/* GIỮ CONTAINER CŨ */
+.container {
+  position: relative;
+  width: 450px;
+  height: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* GIỮ THẺ i NHƯNG ẨN ĐI (để không vỡ cấu trúc HTML) */
+.container i {
+  display: none;
+}
+
+/* KHÔI PHỤC KHUNG LOGIN CŨ */
+.login {
+  position: absolute;
+  width: 340px;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 10;
+
+  /* nền đẹp */
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
+  padding: 30px 25px;
+}
+
+.login h2 {
+  font-size: 2em;
+  color: #fff;
+}
+
+.login .input-box {
+  position: relative;
+  width: 100%;
+}
+
+.login .input-box input,
+.btn-logout {
+  position: relative;
+  width: 100%;
+  padding: 12px 20px;
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 40px;
+  font-size: 1.05em;
+  color: #fff;
+  box-shadow: none;
+  outline: none;
+  text-align: center;
+}
+
+.login .input-box input[type="submit"],
+.btn-logout {
+  width: 100%;
+  background: linear-gradient(45deg, #0078ff, #b153d7);
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.login .input-box input[type="submit"]:hover,
+.btn-logout:hover {
+  background: linear-gradient(45deg, #7adaa5, #0078ff);
+  box-shadow: 1px 1px 20px 1px #fff;
+}
+
+.login .input-box input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.login .links {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.login .links a {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s;
+  font-size: 0.95em;
+}
+
+.login .links a:hover {
+  color: #00f2fe;
+}
+
+.message {
+  width: 100%;
   text-align: center;
   padding: 10px 14px;
   border-radius: 20px;
@@ -144,21 +266,11 @@ body {
   font-weight: bold;
   text-align: center;
 }
-.message.error {
-  background: rgba(255, 0, 85, 0.15);
-  color: #ff7aa8;
-  border: 1px solid #ff7aa8;
-}
 
-.welcome-text {
-  color: #fff;
-  font-size: 1.3em;
-  font-weight: bold;
-  text-align: center;
-}
+/* PHẦN LIÊN HỆ ADMIN */
 .admin-contact {
   width: 100%;
-  margin-top: 15px;
+  margin-top: 10px;
   padding: 14px;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.06);
