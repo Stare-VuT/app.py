@@ -1,42 +1,45 @@
-<!DOCTYPE html>  <html lang="vi">  
-<head>  
-  <meta charset="UTF-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
-  <title>Đăng nhập</title>  
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">  
-</head>  
-<body>  
-  <div class="container">  <div class="login">  
-  <h2>Đăng Nhập</h2>  
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng nhập</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    
 
-  {% with messages = get_flashed_messages(with_categories=true) %}  
-    {% if messages %}  
-      {% for category, message in messages %}  
-        <div class="message {{ category }}">{{ message }}</div>  
-      {% endfor %}  
-    {% endif %}  
-  {% endwith %}  
+    <div class="login">
+      <h2>Đăng Nhập</h2>
 
-  <form method="POST">  
-    <div class="input-box">  
-      <input type="text" name="username" placeholder="Tên tài khoản" required />  
-    </div>  
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="message {{ category }}">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
 
-    <div class="input-box">  
-      <input type="password" name="password" placeholder="Mật khẩu" required />  
-    </div>  
+      <form method="POST">
+        <div class="input-box">
+          <input type="text" name="username" placeholder="Tên tài khoản" required />
+        </div>
 
-    <div class="input-box">  
-      <input type="submit" value="Đăng Nhập" />  
-    </div>  
-  </form>  
+        <div class="input-box">
+          <input type="password" name="password" placeholder="Mật khẩu" required />
+        </div>
 
-  <div class="links">  
-    <a href="#">Quên mật khẩu?</a>  
-    <a href="{{ url_for('register') }}">Đăng ký</a>  
-  </div>  
-</div>
+        <div class="input-box">
+          <input type="submit" value="Đăng Nhập" />
+        </div>
+      </form>
 
-  </div>  
-</body>  
-</html>  
+      <div class="links">
+        <a href="#">Quên mật khẩu?</a>
+        <a href="{{ url_for('register') }}">Đăng ký</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
