@@ -156,3 +156,29 @@ body {
   font-weight: bold;
   text-align: center;
 }
+.admin-contact {
+  width: 100%;
+  margin-top: 15px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+}
+
+.admin-contact h3 {
+  color: #00f2fe;
+  font-size: 1.05em;
+  margin-bottom: 10px;
+}
+
+.admin-contact p {
+  color: #fff;
+  font-size: 0.95em;
+  margin: 6px 0;
+}
+
+.admin-contact span {
+  color: #7adaa5;
+  font-weight: bold;
+}
