@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng nhập</title>
+
+  <script
+    src="https://kit.fontawesome.com/72de7666a8.js"
+    crossorigin="anonymous"
+  ></script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="main-container">
+    <div class="container">
+
+      <div class="nav-like">
+        <div class="title"><h4>Sign in</h4></div>
+        <div class="logo">
+          <img class="main-logo" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="logo" />
+        </div>
+      </div>
+
+      <div class="parent">
+        <div class="form-login">
+          <div class="sub-title"><h5>Đăng nhập hệ thống</h5></div>
+
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="message {{ category }}">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          <form method="POST">
+            <div class="input-fields">
+
+              <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Tên tài khoản" required />
+              </div>
+
+              <div class="input-group password-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Mật khẩu" id="password" required />
+                <div class="show-password" onclick="togglePassword()">
+                  <i class="fas fa-eye"></i>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="keep">
+              <input class="checkbox" type="checkbox" id="keep-me-signed-in" />
+              <label for="keep-me-signed-in">Ghi nhớ đăng nhập</label>
+            </div>
+
+            <button type="submit">Đăng nhập</button>
+          </form>
+
+          <div class="forget">
+            <a href="#">Quên tài khoản?</a>
+            <p>or</p>
+            <a href="#">Quên mật khẩu?</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="socials">
+        <div class="social-icons">
+          <i class="fab fa-discord social-icon"></i>
+          <i class="fab fa-telegram social-icon"></i>
+        </div>
+      </div>
+
+      <div class="no-account">
+        <p class="no-account-text">Chưa có tài khoản?</p>
+        <a href="{{ url_for('register') }}">Tạo tài khoản</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const password = document.getElementById("password");
+      password.type = password.type === "password" ? "text" : "password";
+    }
+  </script>
+</body>
+</html>
