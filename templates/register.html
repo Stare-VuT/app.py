@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng ký</title>
+
+  <script
+    src="https://kit.fontawesome.com/72de7666a8.js"
+    crossorigin="anonymous"
+  ></script>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="main-container">
+    <div class="container">
+
+      <div class="nav-like">
+        <div class="title"><h4>Register</h4></div>
+        <div class="logo">
+          <img class="main-logo" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="logo" />
+        </div>
+      </div>
+
+      <div class="parent">
+        <div class="form-login">
+          <div class="sub-title"><h5>Tạo tài khoản mới</h5></div>
+
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="message {{ category }}">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          <form method="POST">
+            <div class="input-fields">
+
+              <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Tên tài khoản" required />
+              </div>
+
+              <div class="input-group password-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Mật khẩu" id="password1" required />
+              </div>
+
+              <div class="input-group password-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="confirm" placeholder="Nhập lại mật khẩu" id="password2" required />
+              </div>
+
+            </div>
+
+            <button type="submit">Đăng ký</button>
+          </form>
+
+          <div class="forget">
+            <a href="{{ url_for('login') }}">Quay lại đăng nhập</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="socials">
+        <div class="social-icons">
+          <i class="fab fa-discord social-icon"></i>
+          <i class="fab fa-telegram social-icon"></i>
+        </div>
+      </div>
+
+      <div class="no-account">
+        <p class="no-account-text">Đã có tài khoản?</p>
+        <a href="{{ url_for('login') }}">Đăng nhập ngay</a>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
